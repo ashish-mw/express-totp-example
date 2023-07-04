@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan');
+const cors = require('cors');
 
 const jwt = require('./lib/jwt')
 const db = require('./lib/db')
@@ -10,6 +11,8 @@ const app = express();
 app.use(express.json())
 
 app.use(morgan('tiny'))
+
+app.use(cors())
 
 app.get('/', (req, res) => {
   db.printUsers()
@@ -66,7 +69,7 @@ app.post('/verify-totp', auth, (req, res, next) => {
   }
 
   const token = jwt.sign({
-    sub: user.id,
+    sub: req.user.id,
     typ: 'access-token'
   })
 
