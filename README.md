@@ -9,6 +9,9 @@ $ npm run dev
 
 - Visit: http://localhost:5173/
 
+![qr code](./scrot.png)
+
+
 ## Credits
 
 - https://github.com/wuyanxin/totp.js/tree/master
